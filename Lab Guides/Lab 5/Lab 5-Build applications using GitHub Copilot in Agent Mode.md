@@ -1,4 +1,4 @@
-# Lab 07: Build a fitness app with GitHub Copilot agent mode
+# Lab 05: Build a fitness app with GitHub Copilot agent mode
 
 **Objective:**
 
@@ -430,3 +430,4 @@ In this lab, you have
 
 - Setup application directory structure, frontend & backend directories,
   and MongoDB
+
