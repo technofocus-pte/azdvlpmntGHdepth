@@ -1,4 +1,4 @@
-# Lab 03: Remove Commit History from a Git Repository**
+# Lab 03: Remove Commit History from a Git Repository
 
 **Objective:**
 
@@ -21,8 +21,7 @@ In this lab, you will:
 
 1.  Sign in to your GitHub account.
 
-2.  Browse to the following link:
-    <https://github.com/skills/change-commit-history>
+2.  Browse to the following link: +++https://github.com/technofocus-pte/change-commit-history+++
 
     In this lab you will create the repository using a public template
     “**skills-change-commit-history**”.
@@ -123,3 +122,4 @@ In this lab, you will:
 
 Now you have completed cleaning up your Git repository, ensuring that
 sensitive content is not exposed in the repository’s history.
+
