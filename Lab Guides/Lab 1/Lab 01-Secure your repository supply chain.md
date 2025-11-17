@@ -15,7 +15,7 @@ up-to-date.
 In this hands-on lab, you will:
 
 - Enable Dependency Graph: Enable and verify the dependency graph
-  feature in your repository settings to visualize your project's
+  feature in your repository settings to visualise your project's
   dependencies.
 
 - Add a New Dependency: Add a new dependency to your project and ensure
@@ -26,10 +26,8 @@ In this hands-on lab, you will:
 
 # **Exercise 01: Create a new repository**
 
-1.  Browse to the following link:
-    <https://github.com/skills/secure-repository-supply-chain>
-
-    In this lab you will create the repository using a public template **skills-secure-repository-supply-chain**
+1.  Paste the URL and browse to the following repository: +++https://github.com/technofocus-pte/supplychain+++
+    In this lab, you will create the repository using a public template **skills-secure-repository-supply-chain**
 
     ![](./media/image1.png)
 
@@ -166,3 +164,4 @@ In this hands-on lab, you will:
 ### Summary:
 
     You have now gained valuable insights into managing your project's dependencies and securing your repository's supply chain, allowing you to proactively address and mitigate security risks.
+
