@@ -15,8 +15,7 @@ automatically review your source code for potential security issues.
 
 1.  Sign in to your GitHub account.
 
-2.  Browse to the following link:
-    <https://github.com/skills/introduction-to-codeql>
+2.  Browse to the following link: +++https://github.com/technofocus-pte/introcodeql+++
 
   In this lab you will create the repository using a public template
   “**skills-introduction-to-codeql**”.
@@ -77,3 +76,4 @@ automatically review your source code for potential security issues.
 
 In this lab, you have enabled GitHub Code Scanning to automatically
 review your source code for potential security issues.
+
