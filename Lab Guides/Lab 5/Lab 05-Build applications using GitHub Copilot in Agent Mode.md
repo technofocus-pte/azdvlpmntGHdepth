@@ -29,10 +29,8 @@ their GitHub Codespace environment.
 
 1.  Sign in to your GitHub account.
 
-2.  Browse to the following link:
-    +++https://github.com/skills/build-applications-w-copilot-agent-mode/tree/main+++
-
-    In this lab you will create the repository using a public template **skills-build-applications-w-copilot-agent-mode**.
+2.  Browse to the following link: +++https://github.com/technofocus-pte/buildapplicationcopilotagentmode+++
+    In this lab, you will create the repository using a public template **skills-build-applications-w-copilot-agent-mode**.
 
     ![](./media/image1.png)
 
@@ -628,3 +626,4 @@ They gained hands-on experience setting up a Django backend with
 MongoDB, creating and testing REST APIs, and developing a responsive
 React frontend. By the end, participants successfully integrated all
 components into a functional and styled OctoFit Tracker app.
+
