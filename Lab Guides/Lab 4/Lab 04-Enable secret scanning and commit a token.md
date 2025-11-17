@@ -23,8 +23,7 @@ In this hands-on lab, you will:
 
 1.  Sign in to your GitHub account.
 
-2.  Browse to the following link:
-    <https://github.com/skills/introduction-to-secret-scanning>
+2.  Browse to the following link: +++https://github.com/technofocus-pte/introsecretscanning+++
 
     In this lab you will create the repository using a public template
     “**skills-introduction-to-secret-scanning**”.
@@ -117,3 +116,4 @@ AWS.
 
 Now you have gained a practical understanding of how to enable and test
 secret scanning to protect your code and data.
+
