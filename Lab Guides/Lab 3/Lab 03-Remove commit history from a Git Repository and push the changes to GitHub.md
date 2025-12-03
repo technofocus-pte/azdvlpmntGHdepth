@@ -35,7 +35,7 @@ In this lab, you will:
 
 4.  Enter the following details and select **Create Repository**.
 
-- Repository name: **skills-change-commit-history**
+- Repository name: +++skills-change-commit-history+++
 
 - Repository type: **Public**
 
@@ -122,4 +122,5 @@ In this lab, you will:
 
 Now you have completed cleaning up your Git repository, ensuring that
 sensitive content is not exposed in the repository’s history.
+
 
