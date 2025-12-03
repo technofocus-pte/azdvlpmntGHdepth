@@ -49,9 +49,9 @@ In this hands-on lab, you will:
 
     ![](./media/image4.png)
 
-2.  In the **Security** section on the Sidebar, select **Advanced**.
+2.  In the **Security** section on the Sidebar, select **Advanced Security**.
 
-**Note**: You need to scroll down to see the **Security** menu
+    **Note**: You need to scroll down to see the **Advanced Security** option.
 
     ![](./media/image5.png)
 
@@ -116,4 +116,5 @@ AWS.
 
 Now you have gained a practical understanding of how to enable and test
 secret scanning to protect your code and data.
+
 
