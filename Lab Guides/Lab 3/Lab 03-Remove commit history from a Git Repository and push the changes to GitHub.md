@@ -110,13 +110,14 @@ In this lab, you will:
     ![A screenshot of a computer screen Description automatically
     generated](./media/image10.png)
 
-8.  On the Authorise Git Credential Manager window, click on the
+8.  If prompted, on the Authorise Git Credential Manager window, click on the
     **Authorise git-ecosystem** to complete the git push command.
+    Note: This is possible that the authentication can automatically succeed. Then, you can simply jump to the next step.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image11.png)
 
-9.  Then, navigate to the PowerShell again, and you’ll see that the push command is successful.
+10.  Then, navigate to the PowerShell again, and you’ll see that the push command is successful.
 
     ![A screenshot of a computer program Description automatically
     generated](./media/image12.png)
@@ -125,3 +126,4 @@ In this lab, you will:
 
 Now you have completed cleaning up your Git repository, ensuring that
 sensitive content is not exposed in the repository’s history.
+
