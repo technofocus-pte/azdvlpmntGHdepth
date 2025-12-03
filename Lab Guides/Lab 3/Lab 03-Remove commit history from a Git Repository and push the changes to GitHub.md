@@ -12,7 +12,7 @@ In this lab, you will:
 - Clone the repository with accidentally committed sensitive data.
 
 - Remove/delete the file containing sensitive data from the cloned
-  repository and Commit the removal.
+  repository and commit the removal.
 
 - Push Changes to GitHub: Upload the updated repository to GitHub to
   reflect the changes.
@@ -23,7 +23,7 @@ In this lab, you will:
 
 2.  Browse to the following link: +++https://github.com/technofocus-pte/change-commit-history+++
 
-    In this lab you will create the repository using a public template
+    In this lab, you will create the repository using a public template
     “**skills-change-commit-history**”.
 
     ![](./media/image1.png)
@@ -44,11 +44,11 @@ In this lab, you will:
 ### Exercise \# 2: Remove/delete the file (.env in the project root directory) containing sensitive data
 
 1.  On the landing page of the cloned repository, navigate to
-    **Code**\>**Local**\>**HTTPS** and copy the URL.
+    **Code>Local>HTTPS** and copy the URL.
 
     ![](./media/image4.png)
 
-2.  Open windows Powershell and enter the following command.
+2.  Open **Windows PowerShell** and enter the following command.
 
     +++git clone \<your-repository-url\>+++
 
@@ -56,7 +56,7 @@ In this lab, you will:
 
     ![](./media/image5.png)
 
-3.  Switch to your repository directory, enter the following command.
+3.  Switch to your repository directory, and enter the following command.
 
     +++cd “C:\Users\Admin\skills-change-commit-history”+++
 
@@ -72,19 +72,23 @@ In this lab, you will:
     ![A screenshot of a computer screen Description automatically
     generated](./media/image7.png)
 
-5.  Commit the removal of .env file
+5.  Set your account's default identity by executing:
+
+    +++git config --global user.email "**write your GitHub email account here**"+++
+
+6.  After setting the account's identity, commit the removal of the .env file
 
     +++git commit -m "remove .env file”+++
 
     ![A screen shot of a computer Description automatically
     generated](./media/image8.png)
 
-    **Tip**: How to completely remove .env file from Git history and
-    rewrite total history with new commit hashes?
+    **Tip**: How to completely remove the .env file from Git history and
+    Rewrite total history with new commit hashes?
 
     Use the following commands to:
 
-- Completely remove .env file from Git history and rewrite total history
+- Completely remove the .env file from Git history and rewrite the total history
 
     **git filter-branch --force --index-filter 'git rm --cached
     --ignore-unmatch.env' --prune-empty --tag-name-filter cat -- --all**
@@ -100,20 +104,19 @@ In this lab, you will:
     ![A screenshot of a computer program Description automatically
     generated](./media/image9.png)
 
-7.  Once you run the ‘git push’ command, you may asked to connect to
+7.  Once you run the ‘git push’ command, you may be asked to connect to
     GitHub by **signing in with your browser.**
 
     ![A screenshot of a computer screen Description automatically
     generated](./media/image10.png)
 
-8.  On the Authorize Git Credential Manager window, click on the
-    **Authorize git-ecosystem** to complete the git push command.
+8.  On the Authorise Git Credential Manager window, click on the
+    **Authorise git-ecosystem** to complete the git push command.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image11.png)
 
-9.  Then, navigate to the powershell again and you’ll see that the push
-    command is successful.
+9.  Then, navigate to the PowerShell again, and you’ll see that the push command is successful.
 
     ![A screenshot of a computer program Description automatically
     generated](./media/image12.png)
@@ -122,5 +125,3 @@ In this lab, you will:
 
 Now you have completed cleaning up your Git repository, ensuring that
 sensitive content is not exposed in the repository’s history.
-
-
