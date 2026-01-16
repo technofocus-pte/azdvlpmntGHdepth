@@ -1,2 +1,2 @@
 # azdvlpmntGHdepth
-Accelerate Azure DEvelopment with GitHub
+Agentic DevOps with Github
