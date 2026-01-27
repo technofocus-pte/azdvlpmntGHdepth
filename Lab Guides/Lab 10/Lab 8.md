@@ -1,4 +1,4 @@
-# Lab 10: Connect Azure AI Foundry to your Dev Workflow
+# Lab 8: Connect Azure AI Foundry to your Dev Workflow
 
 **Introduction**
 
@@ -394,3 +394,4 @@ development workflow by deploying a model, creating an agent, and
 extending its capabilities using Azure Logic Apps. This integration
 demonstrates how AI agents can interact with external services, enabling
 scalable and actionable AI-driven solutions.
+
