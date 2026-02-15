@@ -1,117 +1,122 @@
 # Lab 05: Code with Codespaces and Visual Studio Code
 
-GitHub offers a range of features to help your development team
-customize a codespace to reach peak configuration and performance needs.
-For example, you can:
+In this lab, you’ll explore how GitHub Codespaces and Visual Studio Code
+work together to provide a cloud-based development environment. You’ll
+create and manage a Codespace, make code changes directly in VS Code,
+and learn how to customize and personalize your development setup to
+improve productivity and consistency.
 
-- Create a codespace from your repository.
+### **Objective:**
 
-- Push code from the codespace to your repository.
+- Create and launch a GitHub Codespace from a repository
 
-- Use VS Code to develop code.
+- Use Visual Studio Code within a Codespace to edit and manage code
 
-- Customize the codespace with custom images.
+- Commit and push code changes from a Codespace to GitHub
 
-- Manage the codespace.
+- Configure a custom development container using devcontainer.json
 
-To begin developing using GitHub Codespaces, you can create a codespace
-from a template or from any branch or commit in a repository. When you
-create a codespace from a template, you can start from a blank template
-or choose a template suitable for the work you're doing.
+- Customise a Codespace with extensions and startup settings
 
-### Objective :
+- Execute commands automatically when a Codespace is created
 
- Practice coding in Codespaces and Visual Studio Code (VS Code).
+- Personalise the development environment using dotfiles
 
-### Task 1 : Start a codespace
+## **Task 1: Start a Codespace**
 
-1.  Open a browser and go to +++https://gitHub.com+++ and sign into GitHub
-    with your GitHub account.
+1. Sign in to GitHub with your GitHub account.
 
-2.  Enter the repo link -
-    +++https://github.com/skills/code-with-codespaces.git+++ and Fork the
-    repo.
+2. Browse to the following repository- +++https://github.com/skills/code-with-codespaces.git+++
 
-3.  Click **Start course** and open the link.
+    ![A screenshot of a computer Description automatically
+    generated](./media/image1.png)
 
-    ![](./media/image1.png)
+3. Navigate to **Code** menu and create a **new Codespace** on the main branch.
 
-3.  Most of the prompts will automatically fill in for you. For owner,
-    choose your personal account or an organization to host the
-    repository. Scroll down and click the **Create repository** button
-    at the bottom of the form.
+    ![A screenshot of a computer Description automatically
+    generated](./media/image2.png)
 
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image2.png)
+4.  Wait about 2 minutes for the Codespace to spin itself up. It's a
+    virtual machine spinning up in the background.
 
-4.  After your new repository is created, wait about 20 seconds, then
-    refresh the page. Follow the step-by-step instructions in the new
-    repository's README.
+    ![A screenshot of a computer Description automatically
+    generated](./media/image3.png)
 
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image3.png)
+5.  Once the Codespace is ready, select the **src** folder from the
+    explorer in the left pane.
 
-5.  Click the green **Code** button located in the middle of the page.
-    Select the **Codespaces** tab in the box that pops up and then click
-    the **Create codespace on main** button.
+  ![A screenshot of a computer Description automatically
+  generated](./media/image4.png)
 
-    ![](./media/image4.png)
+6.  Create a **new file** under the src folder.
 
-6.  Wait about 2 minutes for the codespace to spin itself up. **Note**:
-    It's a virtual machine spinning up in the background.
+    ![A screenshot of a computer Description automatically
+    generated](./media/image5.png)
 
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image5.png)
+## **Task 2: Push code to your repository from the Codespace**
 
-7.  Verify your codespace is running. The browser should contain a VS
-    Code web-based editor and a terminal should be present such as the
-    below: 
+1. Enter the file name as +++index.html+++
 
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image6.png)
+  ![](./media/image6.png)
 
-### Task 2 : Push code to your repository from the codespace
+2. Select the **index.html** file. Enter the code below:
 
-1.  From inside the codespace in the VS Code explorer window, select
-    the **index.html** file. Replace the **h1** header with the below code and
-    Save the file.
+  ```
+  <html>
+  <h1> Hello from the codespace!</h1>
+  </html>
+  ```
 
-    ```
-    <h1>Hello from the codespace!</h1>
-    ```
+**Note**: The file should autosave.
 
-    **Note**: The file should autosave.
+    ![A screenshot of a computer Description automatically
+    generated](./media/image7.png)
 
-    ![](./media/image7.png)
+3.  Once the code is added, navigate to **Source control** tab from the
+    left pane.
 
-2.  Use the VS Code terminal to commit the file change by entering the
-    following commit message:
+  ![A screenshot of a computer Description automatically
+  generated](./media/image8.png)
 
-    +++git commit -a -m "Adding hello from the codespace!"+++
+4. Enter commit message as +++updated index.html+++ and commit the changes.
 
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image8.png)
+    ![](./media/image9.png)
 
-3.  Push the changes back to your repository. From the VS Code terminal,
-    enter:
+5.  Select **Yes** to stage all your changes and commit them directly.
 
-    +++git push+++
+  ![](./media/image10.png)
 
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image9.png)
+6.  Sync the changes.
 
-4.  Your code has been pushed to your repository. Switch back to the
-    homepage of your repository and view the index.html to verify the
-    new code was pushed to your repository.
+  ![A screenshot of a computer Description automatically
+  generated](./media/image11.png)
 
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image10.png)
+7.  Click on **OK** to confirm.
 
-5.  Wait about 20 seconds then refresh this page (the one you're
-    following instructions from). GitHub Actions will automatically
-    update to the next step.
+  ![](./media/image12.png)
 
-### Task 3 : Add a custom image to your codespace
+8.  Navigate to **GitHub repository** and select **src** folder.
+
+  ![A screenshot of a computer Description automatically
+  generated](./media/image13.png)
+
+9.  View the **index.html** to verify that the new code was pushed to
+    your repository.
+
+  ![A screenshot of a computer Description automatically
+  generated](./media/image14.png)
+
+10. You can see the code is now successfully pushed to the repository.
+
+  ![A screenshot of a computer Description automatically
+  generated](./media/image15.png)
+
+11. Select the **repository name** to switch back to the main page.
+
+  ![A screenshot of a computer Description automatically
+  generated](./media/image16.png)
+
+## **Task 3: Add a custom image to your Codespace**
 
 *You created your first codespace and pushed code using VS Code!*
 
@@ -125,25 +130,39 @@ containers, are Docker containers that are specifically configured to
 provide a fully featured development environment. Whenever you work in a
 codespace, you are using a dev container on a virtual machine.
 
-A dev container file is a JSON file that lets you customize the default
-image that runs your codespace, VS code settings, run custom code,
+A dev container file is a JSON file that lets you customise the default
+image that runs your codespace, VS Code settings, run custom code,
 forward ports and much more!
 
 Let's add a devcontainer.json file and add a custom image.
 
-1.  Navigating back to your **Code** tab of your repository, click
-    the **Add file** drop-down button, and then click **Create new
-    file**.
+1.  On the repository’s homepage, click on **Add file** dropdown.
 
-    ![](./media/image11.png)
+  ![](./media/image17.png)
 
-2.  Type or paste the following in the empty text field prompt to name
-    your file: +++devcontainer/devcontainer.json+++
+2.  Select the **Create new file** option from the dropdown menu.
+
+  ![](./media/image18.png)
+
+3.  Enter the folder name as **.devcontainer** followed by a slash **/**
+    to enter the file name in the next step. Hence, you need to enter
+    the folder name as:
+
+    +++.devcontainer/+++
+ 
+    ![A screenshot of a computer Description automatically
+    generated](./media/image19.png)
     
-    ![](./media/image12.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image20.png)
 
-3.  In the body of the new **.devcontainer/devcontainer.json** file, add
-    the following content. Click **Commit changes** .
+4.  Now, enter +++devcontainer.json+++ as the file name.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image21.png)
+
+5.  In the body of the new **.devcontainer/devcontainer.json** file, add
+    the following content. Click **Commit changes**.
 
     ```
     {
@@ -155,57 +174,35 @@ Let's add a devcontainer.json file and add a custom image.
     "overrideCommand": false
     }
     ```
+ 
+  ![](./media/image22.png)
 
-    ![](./media/image13.png)
+6.  Copilot has already generated the **commit message**. Then, select
+    **commit changes** button.
 
-4.  Select **Commit changes directly to the main branch**.
+  ![](./media/image23.png)
 
-    ![](./media/image14.png)
+## **Task 4: Customise your Codespace- Add customisations to the devcontainer file**
 
-5.  Create a new codespace by navigating back to the **Code** tab of
-    your repository.
+You created a codespace with a custom image!
 
-6.  Click the green **Code** button located in the middle of the page.
-    Click the **Codespaces** tab on the box that pops up.Click
-    the **Create codespace on main** button OR click the + sign on the
-    tab. This will create a new codespace on the main branch. (Notice
-    your other codespace listed here.)
-
-    ![](./media/image15.png)
-
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image16.png)
-
-7.  Wait about **2 minutes** for the codespace to spin itself up.
-
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image17.png)
-
-8.  Verify that your new codespace is running, as you did
-    previously.Note the image being used is the default image provided
-    for GitHub Codespaces. It includes runtimes and tools for Python,
-    Node.js, Docker, and more.
-
-### Task 4 : Customize your codespace- Add customizations to the devcontainer file
-
-*You created a codespace with a custom image!*
-
-You can customize your codespace by adding VS code extensions, adding
+You can customise your codespace by adding VS Code extensions, adding
 features, setting host requirements, and much more.
 
-Let's customize some settings in the devcontainer.json file!
+Let's customise some settings in the devcontainer.json file!
 
 1.  Navigate to the **.devcontainer/devcontainer.json** file. Click on
-    **Edit**
+    **Edit.**
 
-    ![](./media/image18.png)
+  ![A screenshot of a computer Description automatically
+  generated](./media/image24.png)
 
-2.  Add the following customizations to the body of the file before the
-    last **angular bracket }**. Click **Commit changes** 
+2.  Add the following customisations to the body of the file **before
+    the** **last curly bracket }**. Click **Commit changes** 
 
     ```
     // Add the IDs of extensions you want installed when the container is created.
-    "customizations": {
+    "customisations": {
         "vscode": {
             "extensions": [
                 "GitHub.copilot"
@@ -218,145 +215,140 @@ Let's customize some settings in the devcontainer.json file!
         }
     }
     ```
-    ![](./media/image19.png)
+  ![](./media/image25.png)
 
 3.  Select **Commit changes directly to the main branch**.
 
-    ![](./media/image20.png)
+  ![](./media/image26.png)
 
-4.  Ensure the number of active codespaces does not reach the maximum
-    (typically 2 ).Delete the first codespace.
+4.  Click on the **repository name** to switch back to the main page.
 
-    ![](./media/image21.png)
+  ![A screenshot of a computer Description automatically
+  generated](./media/image27.png)
 
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image22.png)
+5.  Expand the **Code** section.
 
-5.  Create a new codespace by navigating to the landing page of your
-    repository.Click the **Code** button located in the middle of the
-    page.Click the **Codespaces** tab on the box that pops up.
+  ![A screenshot of a computer Description automatically
+  generated](./media/image28.png)
 
-    **Tip**: To stop an active codespace, click the **•••** next
-    to **●Active** and select **Stop codespace** from the menu.
+6.  Create a **New Codespace** by clicking **+** icon.
 
-    ![](./media/image23.png)
+  ![A screenshot of a computer Description automatically
+  generated](./media/image29.png)
 
-6.  Wait about **2 minutes** for the codespace to spin itself up.
+7.  Wait about **2 minutes** for the codespace to spin itself up.
 
-7.  Verify your codespace is running, as you did
-    previously.The codespace.md file should show up in the VS Code
-    editor.
+  ![A screenshot of a computer Description automatically
+  generated](./media/image30.png)
 
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image24.png)
+8.  Once the codespace is ready, navigate to the **Extensions** tab.
 
-8.  The copilot extension should show up in the VS Code extension list.
+  ![A screenshot of a computer Description automatically
+  generated](./media/image31.png)
 
-    ![](./media/image25.png)
+9.  Search for **GitHub Copilot** in the extensions search bar and make sure this extension is installed.
 
-This will add a VS Code extension as well as open a file on start up of
-the codespace.
+  ![](./media/image32.png)
 
-Next lets add some code to run upon creation of the codespace!
+Next, let’s add some code to run upon creation of the codespace!
 
-### Task 5 : Execute code upon creation of the codespace
+## **Task 5: Execute code upon creation of the codespace**
 
-1.  Edit the .devcontainer/devcontainer.json file.
+1.  Navigate to the GitHub repository and **edit**
+    the **devcontainer.json** file.
 
-    ![](./media/image26.png)
+  ![A screenshot of a computer Description automatically
+  generated](./media/image33.png)
 
-2.  Add the following postCreateCommand to the body of the file before
-    the last **angular bracket }**.
+2.  Add the following **postCreateCommand** to the body of the file
+    **before the last curly bracket }.** After that, **commit** the
+    changes.
 
     ```
-     ,
-    "postCreateCommand": "echo '# Writing code upon codespace creation!'  >> codespace.md"
+    ,
+    "postCreateCommand": "echo '# Writing code upon codespace creation!'
+    \ \  codespace.md"
     ```
 
-    ![](./media/image27.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image34.png)
 
-3.  Click **Commit changes** and then select **Commit changes directly
-    to the main branch**.
+3.  With the commit message, click on **commit changes**.
 
-    ![](./media/image28.png)
+    ![](./media/image35.png)
 
-4.  Create a new codespace by navigating to the landing page of your
-    repository.
+## Task 6: Personalise your codespace- Enable a dotfile for your codespace
 
-5.  Click the **Code** button located in the middle of the page.Click
-    the **Codespaces** tab on the box that pops up.Click the 
-    **codespace +** button.
-
-    ![](./media/image29.png)
-
-6.  Wait about **2 minutes** for the codespace to spin itself up.
-
-7.  Verify your codespace is running, as you did previously.
-
-8.  Verify the codespace.md file now has the text Writing code upon
-    codespace creation!.
-
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image30.png)
-
-### Task 6: Personalize your codespace- Enable a dotfile for your codespace
-
-When using any development environment, customizing the settings and
+When using any development environment, customising the settings and
 tools to your preferences and workflows is an important step. GitHub
-Codespaces offers two main ways of personalizing your
+Codespaces offers two main ways of personalising your
 codespace: Settings Sync with VS Code and dotfiles.
 
 Dotfiles will be the focus of this activity.
 
-**What are dotfiles?** Dotfiles are files and folders on Unix-like
-systems starting with . that control the configuration of applications
+**What are dotfiles?** Dotfiles are files and folders on Unix-like systems
+starting with . that control the configuration of applications
 and shells on your system. You can store and manage your dotfiles in a
 repository on GitHub.
 
 Let's see how this works!
 
-1.  Start from the landing page of your repository.In the upper-right
-    corner of any page, click your profile photo, and then
+1.  Start from the landing page of your repository. In the upper-right
+    corner of any page, click your profile icon, and then
     click **Settings**.
 
-    ![](./media/image31.png)
+  ![](./media/image36.png)
 
 2.  In the **Code, planning, and automation** section of the sidebar,
     click **Codespaces**.
 
+  ![](./media/image37.png)
+
 3.  Under **Dotfiles**, select **Automatically install dotfiles** so
-    that GitHub Codespaces automatically installs your dotfiles into
+    GitHub Codespaces automatically installs your dotfiles into
     every new codespace you create.
 
-    ![](./media/image32.png)
+  ![A screenshot of a computer Description automatically
+  generated](./media/image38.png)
 
 4.  Click **Select repository** and then choose your current skills
     working repository as the repository from which to install dotfiles.
 
-    ![](./media/image33.png)
+  ![](./media/image39.png)
 
-### Task 7 : Add a dotfile to your repository and run your codespace
+## **Task 7: Add a dotfile to your repository and run your codespace**
 
-1.  Start from the landing page of your repository.Click
-    the **Code** button located in the middle of the page.
+1.  Once the repository is selected, click on the **hamburger** icon to
+    navigate to the main page of the repository.
 
-2.  Click the **Codespaces** tab on the box that pops up.Click the on
-    **codespace +**
+  ![](./media/image40.png)
 
-    ![](./media/image34.png)
+2.  Select your repository.
 
-3.  Wait about **2 minutes** for the codespace to spin itself up.
+  ![A screenshot of a computer Description automatically
+  generated](./media/image41.png)
 
-4.  Verify your codespace is running. The browser should contain a VS
-    Code web-based editor and a terminal should be present such as the
-    below:
+3.  Select Code and under the codespaces, delete the codespace that you
+    have created initially in this lab.
+
+![](./media/image42.png)
+
+4.  Once one codespace is deleted, start a **new codespace** because
+    maximum of two codespaces are allowed to be created.
+
+![](./media/image43.png)
 
 5.  From inside the codespace in the VS Code explorer window, create a
-    new file **setup.sh**.
+    new file.
 
-    ![](./media/image35.png)
+  ![A screenshot of a computer Description automatically
+  generated](./media/image44.png)
 
-6.  Enter the following code into the file. Save the file.
+6.  Provide a name to the new file as +++setup.sh+++
+
+  ![](./media/image45.png)
+
+7.  Enter the following code into the file:
 
     ```
     #!/bin/bash
@@ -365,40 +357,50 @@ Let's see how this works!
     echo "export PATH=\$PATH:/usr/games" >> ~/.bashrc
     ```
 
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image36.png)
+    ![](./media/image46.png)
 
-**Note**: The file should autosave.
+    **Note**: The file should autosave.
 
-7.  Commit the file changes. From the VS Code terminal enter:
+8.  From the **VS Code terminal**, enter the command below and press
+    **Enter**:
 
-    +++git add setup.sh --chmod=+x+++
-    +++git commit -m "Adding setup.sh from the codespace!"+++
+    ```
+    git add setup.sh --chmod=+x
+    ```
 
-![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image37.png)
+  ![](./media/image47.png)
 
-8.  Push the changes back to your repository. From the VS Code terminal,
-    enter:
+9.  Now, enter the commit message through this command:
 
-    +++git push+++
+    ```
+    git commit -m "Adding setup.sh from the codespace!"
+    ```
 
-    ![A screenshot of a computer AI-generated content may be
-    incorrect.](./media/image38.png)
+  ![](./media/image48.png)
 
-9.  Switch back to the homepage of your repository and view
-    the setup.sh to verify the new code was pushed to your repository.
+10. Navigate to **Source Control.**
 
-10. Close the codespace web browser tab.
+  ![](./media/image49.png)
 
-## Summary:
+11. Update the commit message and commit the changes.
 
-*Congratulations, you've completed this course!*
+  ![A screenshot of a computer Description automatically
+  generated](./media/image50.png)
 
-Here's a recap of all the tasks you've accomplished in your repository:
+12. Click on **Yes** to stage all changes and commit them directly.
 
-- You learned how to create a codespace and push code to your repository from the codespace.
-- You learned how to use custom images in your codespace.
-- You learned how to customize your codespace.
-- You learned how to personalize your codespace.
+  ![A screenshot of a computer Description automatically
+  generated](./media/image51.png)
 
+## **Summary:**
+
+**Congratulations, you've completed this lab and learned a lot about
+GitHub Codespaces!**
+
+In this lab, you learned how to use GitHub Codespaces as a fully
+featured cloud development environment with Visual Studio Code. You
+practiced creating and managing codespaces, pushing code changes,
+customizing the development container, and personalizing your setup
+using extensions and dotfiles. These skills help you create consistent,
+efficient, and reproducible development environments for yourself and
+your team
