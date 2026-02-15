@@ -1,4 +1,4 @@
-# Lab 05: Build Application using the GitHub Copilot
+# Lab 06: Build Application using the GitHub Copilot
 
 In this lab, participants will set up a preconfigured development
 environment using GitHub Codespaces to build a full-stack OctoFit
@@ -628,3 +628,4 @@ They gained hands-on experience setting up a Django backend with
 MongoDB, creating and testing REST APIs, and developing a responsive
 React frontend. By the end, participants successfully integrated all
 components into a functional and styled OctoFit Tracker app.
+
