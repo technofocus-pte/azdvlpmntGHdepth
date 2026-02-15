@@ -1,4 +1,4 @@
-# Lab 05 - Code with Codespaces and Visual Studio Code
+# Lab 05: Code with Codespaces and Visual Studio Code
 
 GitHub offers a range of features to help your development team
 customize a codespace to reach peak configuration and performance needs.
@@ -401,3 +401,4 @@ Here's a recap of all the tasks you've accomplished in your repository:
 - You learned how to use custom images in your codespace.
 - You learned how to customize your codespace.
 - You learned how to personalize your codespace.
+
