@@ -329,7 +329,7 @@ enforces your governance policy — unsafe code (like eval()) cannot be
 merged into main. Once you do, any PR with risky code will show a red ❌
 and merging will be blocked until the issue is fixed.
 
-    ![A screenshot of a computer Description automatically
+![A screenshot of a computer Description automatically
     generated](./media/image36.png)
 
 9.  Click **Create** or **Save changes**.
