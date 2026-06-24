@@ -375,8 +375,9 @@ employee by email and ensure it is properly tested at every layer.**
 
 Add a new feature to the API:**Find employee by email**
 
-1.  Open Copilot chat and enter below prompt
-   ```
+1.  Open Copilot chat and enter below prompt:
+   
+     ```
     Adda new features to find an employee by email
     Requirements:
     -	Add a repository method to find employee by email
@@ -384,13 +385,13 @@ Add a new feature to the API:**Find employee by email**
     -	Add a REST endpoint to fetch employee by email
     -	Generate unit tests for repository service and controller layers
     -	Follow existing coding style
-    ```
-
-    ![](./media/image35.png)
+     ```
+     
+     ![](./media/image35.png)
 
 3.  Review the response and accept by clicking on keep
 
-    ![](./media/image36.png)
+     ![](./media/image36.png)
 
 4.  **Review and accept the tests**
 
