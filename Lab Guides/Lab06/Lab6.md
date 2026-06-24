@@ -59,17 +59,18 @@ Before writing any tests, developers must clearly understand **what the applicat
 to test or enhance code they did not write. This task focuses on using  **GitHub Copilot as a comprehension assistant** to analyze an existing
 REST API, identify endpoints, and document expected behavior.
 
-1.  Open Visual Studio Code from the desktop and sign in with your GitHub Copilot license account.Navigate to C:\Labfile and extract the github-copilot-workshops-labs-java file
+1.  Open Visual Studio Code from the desktop and sign in with your GitHub Copilot license account.
+    **Navigate to C:\Labfiles and extract the github-copilot-workshops-labs-java file**
 
-2.  Click on **File-\> Open Folder-\>C:\Labfiles** and select the  folder - **github-copilot-workshops-labs-java** 
+3.  Click on **File-\> Open Folder-\>C:\Labfiles** and select the  folder - **github-copilot-workshops-labs-java** 
 
      ![](./media/image1.png)
 
-3.  Open the 01-testing-\> java-\>src->main-\>controller-\> EmployeeController.java api
+4.  Open the 01-testing-\> java-\>src->main-\>controller-\> EmployeeController.java api
 
      ![](./media/image2.png)
 
-4.  Read the controller classes (example - @RestController
+5.  Read the controller classes (example - @RestController
     ,@RequestMapping, getMapping, etc.) of the API and identify
 
     - **Base URL** (common path prefix used by all APIs in this
@@ -86,7 +87,7 @@ REST API, identify endpoints, and document expected behavior.
 
     ![](./media/image3.png)
 
-5.  Below are the base URL, HTTP methods, Request body and response from
+6.  Below are the base URL, HTTP methods, Request body and response from
     EmployeeController.java api
 
     Base URL : **/api/employees**
