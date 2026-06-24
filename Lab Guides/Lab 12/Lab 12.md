@@ -10,7 +10,7 @@ push protection to safeguard your applications. By the end, you will
 understand how GHAS acts as a security quality gate, ensuring that
 unsafe code and secrets never reach production.
 
-# **Objectives**
+## **Objectives**
 
 - Enable CodeQL scanning for automated vulnerability detection
 
@@ -28,147 +28,126 @@ unsafe code and secrets never reach production.
 up a workflow that automatically checks your code for vulnerabilities
 whenever you push changes or open a pull request.
 
-1.  Sign in to your **[Github](https://github.com/)** account.
+1.  Sign in to your +++https://github.com/+++ account.
 
 2.  Click on the **+** icon and create **a new repository**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image1.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image1.png)
 
-3.  Set the repository name as **payments-api**. Make sure repository is
+3.  Set the repository name as +++payments-api+++. Make sure repository is
     set to **Public** and add a README file. Click on **Create
     repository**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image2.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image2.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image3.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image3.png)
 
 4.  On the payments-api repository, select **create a new file** from
     the **Add file** dropdown.
 
-![A screenshot of a computer Description automatically
-generated](./media/image4.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image4.png)
 
 5.  Enter file name as **app.js** and add the below code. **Commit** the
     changes.
 
-function getUser(userId) {
+    ```
+    function getUser(userId) {
+    const query = `SELECT * FROM users WHERE id = ${userId}`;
+    return query;
+    }
 
-const query = \`SELECT \* FROM users WHERE id = ${userId}\`;
+    module.exports = { getUser };
+    ```
 
-return query;
-
-}
-
-module.exports = { getUser };
-
-![A screenshot of a computer Description automatically
-generated](./media/image5.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image5.png)
 
 6.  Add the commit message and click **commit changes**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image6.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image6.png)
 
 7.  Once the changes are committed, navigate to repository **Settings**.
 
-![A screenshot of a web page Description automatically
-generated](./media/image7.png)
+    ![A screenshot of a web page Description automatically
+    generated](./media/image7.png)
 
 8.  Select **Advanced Security** option from the left pane.
 
-![A screenshot of a computer Description automatically
-generated](./media/image8.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image8.png)
 
 9.  Scroll down to **CodeQL Analysis** and select **Advanced** setup.
 
-![A screenshot of a computer Description automatically
-generated](./media/image9.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image9.png)
 
 10. Keep the file name as is and **replace** the code with the below
     code and **commit** the changes:
 
-name: "CodeQL"
+    ```
+    name: "CodeQL"
 
-on:
+    on:
+    push:
+        branches: [ "main" ]
+    pull_request:
+        branches: [ "main" ]
+    schedule:
+        - cron: '0 0 * * 0'
 
-push:
+    jobs:
+    analyze:
+        name: Analyze
+        runs-on: ubuntu-latest
 
-branches: \[ "main" \]
+        permissions:
+        actions: read
+        contents: read
+        security-events: write
 
-pull_request:
+        strategy:
+        fail-fast: false
+        matrix:
+            language: [ 'javascript' ]   # change to 'java' if needed
 
-branches: \[ "main" \]
+        steps:
+        - name: Checkout repository
+            uses: actions/checkout@v4
 
-schedule:
+        - name: Initialize CodeQL
+            uses: github/codeql-action/init@v3
+            with:
+            languages: ${{ matrix.language }}
 
-- cron: '0 0 \* \* 0'
+        - name: Autobuild
+            uses: github/codeql-action/autobuild@v3
 
-jobs:
+        - name: Perform CodeQL Analysis
+            uses: github/codeql-action/analyze@v3
+    ```
 
-analyze:
-
-name: Analyze
-
-runs-on: ubuntu-latest
-
-permissions:
-
-actions: read
-
-contents: read
-
-security-events: write
-
-strategy:
-
-fail-fast: false
-
-matrix:
-
-language: \[ 'javascript' \] \# change to 'java' if needed
-
-steps:
-
-- name: Checkout repository
-
-uses: actions/checkout@v4
-
-- name: Initialize CodeQL
-
-uses: github/codeql-action/init@v3
-
-with:
-
-languages: ${{ matrix.language }}
-
-- name: Autobuild
-
-uses: github/codeql-action/autobuild@v3
-
-- name: Perform CodeQL Analysis
-
-uses: github/codeql-action/analyze@v3
-
-![A screenshot of a computer Description automatically
-generated](./media/image10.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image10.png)
 
 11. Update the **commit message** and commit changes.
 
-![A screenshot of a computer Description automatically
-generated](./media/image11.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image11.png)
 
 12. Navigate to Actions tab and select **CodeQL** from the left pane.
     You’ll see a workflow and wait for it till the status shows
     successful.
 
-![A screenshot of a computer Description automatically
-generated](./media/image12.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image12.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image13.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image13.png)
 
 ### **Exercise 2: Detect Vulnerabilities in Practice**
 
@@ -178,8 +157,8 @@ unsafe merges, showing how security checks protect your main branch.
 
 1.  Navigate to the **Code** tab and create a **new codespace** on main.
 
-![A screenshot of a computer Description automatically
-generated](./media/image14.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image14.png)
 
 2.  Wait for 4-5 mins for the codespace to load all the dependencies and
     packages.
@@ -188,122 +167,116 @@ generated](./media/image14.png)
     named **security/codeql-test** so you can isolate changes for CodeQL
     security testing without affecting the main branch.
 
-git checkout -b security/codeql-test
+    +++git checkout -b security/codeql-test+++
 
-![A screenshot of a computer Description automatically
-generated](./media/image15.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image15.png)
 
 4.  Open the existing **app.js** file and **replace** the code with the
     below code:
 
-const express = require('express');
+    ```
+    const express = require('express');
+    const app = express();
 
-const app = express();
+    // Simulated request handler
+    app.get('/user', (req, res) => {
+    const userId = req.query.id;
 
-// Simulated request handler
+    const query = "SELECT * FROM users WHERE id = " + userId;
 
-app.get('/user', (req, res) =\> {
+    const file = req.query.file;
+    res.sendFile('/uploads/' + file);
+    });
 
-const userId = req.query.id;
-
-const query = "SELECT \* FROM users WHERE id = " + userId;
-
-const file = req.query.file;
-
-res.sendFile('/uploads/' + file);
-
-});
-
-app.listen(3000);
-
-![A screenshot of a computer Description automatically
-generated](./media/image16.png)
+    app.listen(3000);
+    ```
+    ![A screenshot of a computer Description automatically
+    generated](./media/image16.png)
 
 5.  Stage the modified file in the current directory for commit. Run the
     command:  
       
-    **git add .**
+    +++git add .+++
 
-![A screenshot of a computer Description automatically
-generated](./media/image17.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image17.png)
 
 6.  Create the **commit** with the staged changes and the given message.
     Run the command:  
       
-    **git commit -m "test: add real vulnerable patterns"**
+    +++git commit -m "test: add real vulnerable patterns"+++
 
-![A screenshot of a computer Description automatically
-generated](./media/image18.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image18.png)
 
 7.  Now, upload the commits to the remote repository on the branch
     (security/codeql-test). Run the command:  
       
-    **git push origin security/codeql-test**
+    +++git push origin security/codeql-test+++
 
-![A screenshot of a computer Description automatically
-generated](./media/image19.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image19.png)
 
-8.  Navigate to your GitHub repository and select **compare and pull
-    request** notification.
+8.  Navigate to your GitHub repository and select **compare and pull request** notification.
 
-![A screenshot of a computer Description automatically
-generated](./media/image20.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image20.png)
 
 9.  Proceed with creating a **pull request**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image21.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image21.png)
 
 10. You’ll see CodeQL will do the quality checks before merging the pull
     request.
 
-![A screenshot of a computer Description automatically
-generated](./media/image22.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image22.png)
 
 11. Some checks were not successful — 1 failing check. CodeQL acts like
     a **security quality gate**. It can:
 
-- Block unsafe code
+    - Block unsafe code
 
-- Highlight vulnerabilities before merge
+    - Highlight vulnerabilities before merge
 
-> After reviewing the checks, **merge** the pull request.
+    After reviewing the checks, **merge** the pull request.
 
-![A screenshot of a chat Description automatically
-generated](./media/image23.png)
+    ![A screenshot of a chat Description automatically
+    generated](./media/image23.png)
 
 12. If you merge the PR with unresolved issues, the vulnerable code goes
     into main. **Confirm** the merge.
 
-![A screenshot of a computer Description automatically
-generated](./media/image24.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image24.png)
 
 13. Navigate to **Actions** tab and make sure the **merge** **workflow**
     run is **succeeded** before moving to the next step.
 
-![A screenshot of a computer Description automatically
-generated](./media/image25.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image25.png)
 
-![A screenshot of a computer Description automatically
-generated](./media/image26.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image26.png)
 
 14. Navigate to **Security and quality** tab. On the **code scanning
     alerts** option, select **view alerts**.
 
-![A screenshot of a computer Description automatically
-generated](./media/image27.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image27.png)
 
-15. Navigate to **Security and quality** tab. On the **code scanning
-    alerts** option, select **view alerts**.
+15. Navigate to **Security and quality** tab. On the **code scanning alerts** option, select **view alerts**.
 
-CodeQL scans code using predefined security rules and detects risky
-patterns.  
-After merging, these findings are stored in the Security tab of GitHub
-to track vulnerabilities in the main codebase. This helps teams monitor
-and fix security issues continuously.
+    CodeQL scans code using predefined security rules and detects risky
+    patterns.  
+    After merging, these findings are stored in the Security tab of GitHub
+    to track vulnerabilities in the main codebase. This helps teams monitor
+    and fix security issues continuously.
 
-![A screenshot of a computer Description automatically
-generated](./media/image28.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image28.png)
 
 ### **Exercise 3: Prevent Secret Leaks with Push Protection**
 
@@ -314,56 +287,56 @@ sensitive credentials from being exposed.
 1.  Navigate to **Settings** tab and select **Advanced security** option
     from the left pane.
 
-![A screenshot of a computer Description automatically
-generated](./media/image29.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image29.png)
 
 2.  Make sure **Push Protection** is enabled.
 
-![A screenshot of a computer Description automatically
-generated](./media/image30.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image30.png)
 
 3.  Now, open the **codespace** and in terminal, run the below command.
-    This will write a fake GitHub personal access token into a file
+    This command will write a fake GitHub personal access token into a file
     named **.env.test**
 
-**echo ' ghp_abcdefghijklmnopqrstuvwxyz1234567890abcd' \> .env.test**
+    +++echo ' ghp_abcdefghijklmnopqrstuvwxyz1234567890abcd' > .env.test+++
 
-![A screenshot of a computer Description automatically
-generated](./media/image31.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image31.png)
 
 4.  Run the below command to stage the .env.test file so it will be
     included in the next commit:
 
-**git add .env.test**
+    +++git add .env.test+++
 
-> ![A screenshot of a computer Description automatically
-> generated](./media/image32.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image32.png)
 
 5.  Run the below command. This creates a commit containing the staged
     file with a message indicating it’s for secret detection testing.
 
-**git commit -m "test secret detection"**
+    +++git commit -m "test secret detection"+++
 
-![A screenshot of a computer Description automatically
-generated](./media/image33.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image33.png)
 
 6.  Upload the commit to the repository on the current branch, so secret
     scanning tools can detect the test token.
 
-**git push**
+    +++git push+++
 
-**Expected result:**
+    **Expected result:**
 
-> **GitHub will block your push because of the secret detection.** This
-> error occurs because GitHub detected a sensitive value (like an API
-> key) in your commit during git push. Push protection blocks the upload
-> to prevent secrets from being exposed in the repository. It means you
-> must remove or secure the secret before the code can be pushed.
+    **GitHub will block your push because of the secret detection.** This
+    error occurs because GitHub detected a sensitive value (like an API
+    key) in your commit during git push. Push protection blocks the upload
+    to prevent secrets from being exposed in the repository. It means you
+    must remove or secure the secret before the code can be pushed.
 
-![A screenshot of a computer Description automatically
-generated](./media/image34.png)
+    ![A screenshot of a computer Description automatically
+    generated](./media/image34.png)
 
-### **Conclusion**
+## **Conclusion**
 
 Securing a DevOps pipeline requires proactive detection and prevention
 of risks at every stage of development. Through this lab, you enabled
