@@ -1,6 +1,4 @@
-# Lab6-Accelerating test‑driven development for a Java REST API with GitHub Copilot
-
-# 
+# Lab 06: Accelerating test‑driven development for a Java REST API with GitHub Copilot
 
 **Lab Overview**
 
@@ -15,7 +13,7 @@ retaining full developer judgment and control.
 
 By completing this lab, you will be able to:
 
-- Analyze an existing Java REST API
+- Analyse an existing Java REST API
 
 - Document API endpoints using sample curl commands
 
@@ -25,7 +23,7 @@ By completing this lab, you will be able to:
 
 - Use mocks correctly for isolated unit testing
 
-- Customize GitHub Copilot behavior using custom instructions
+- Customise GitHub Copilot behaviour using custom instructions
 
 - Improve test coverage and test quality
 
@@ -57,28 +55,22 @@ configured:
 - Testing Libraries: JUnit, Mockito
 
 ## Task 1: Understand the API
-
-Before writing any tests, developers must clearly understand **what the
-application does**. In real-world projects, developers are often asked
-to test or enhance code they did not write. This task focuses on using
-**GitHub Copilot as a comprehension assistant** to analyze an existing
+Before writing any tests, developers must clearly understand **what the application does**. In real-world projects, developers are often asked
+to test or enhance code they did not write. This task focuses on using  **GitHub Copilot as a comprehension assistant** to analyze an existing
 REST API, identify endpoints, and document expected behavior.
 
-1.  Open Visual Studio code form Desktop and sign in with your GitHub
-    Copilot license account
+1.  Open Visual Studio Code from the desktop and sign in with your GitHub Copilot license account.Navigate to C:\Labfile and extract the github-copilot-workshops-labs-java file
 
-2.  Click on **File-\> Open Folder-\>C:\Labfiles** and select the
-    folder - **github-copilot-workshops-labs-java**
+2.  Click on **File-\> Open Folder-\>C:\Labfiles** and select the  folder - **github-copilot-workshops-labs-java** 
 
-> ![](./media/image1.png)
+     ![](./media/image1.png)
 
-3.  Open the 01-testing-\> java-\>main-\>controller-\>
-    EmployeeController.java api
+3.  Open the 01-testing-\> java-\>src->main-\>controller-\> EmployeeController.java api
 
-> ![](./media/image2.png)
+     ![](./media/image2.png)
 
 4.  Read the controller classes (example - @RestController
-    ,@RequestMapping ,getMapping etc)) of the API and identify
+    ,@RequestMapping, getMapping, etc.) of the API and identify
 
     - **Base URL** (common path prefix used by all APIs in this
       controller)
@@ -86,249 +78,79 @@ REST API, identify endpoints, and document expected behavior.
     - **HTTP methods** (HTTP methods describe what you want to do with
       the resource (Employee).
 
-    - **Request Body (**The Request Body is the data sent by the client
+    - **Request Body** (The Request Body is the data sent by the client
       to the server, usually in JSON format.)
 
     - **Response** (The Response is what the API sends back to the
       client.)
 
-![](./media/image3.png)
+    ![](./media/image3.png)
 
-1.  Below are the base URL, HTTP methods, Request body and response from
+5.  Below are the base URL, HTTP methods, Request body and response from
     EmployeeController.java api
 
-> Base URL : **/api/employees**
->
-> Http: Methods:
+    Base URL : **/api/employees**
 
-[TABLE]
+    Http: Methods:
 
-> Retrieve all employees - public List\<Employee\> getAllEmployees()
->
-> Create new employee(PostMapping)- public Employee
-> createEmployee(@RequestBody Employee employee)
->
-> **Request body :**
->
-> public Employee createEmployee(@RequestBody Employee employee)
-> –(PostMapping)
->
-> public Employee updateEmployee(@PathVariable Long id,@RequestBody
-> Employee employee) –( @PutMapping("/{id}")
+    
+    
+    |**HTTP Method**|	**Purpose**|	**Endpoint**|
+    |--|--|--|
+    |GET|Retrieve data|/api/employees|
+    |GET|Retrieve one record|/api/employees/{id}|
+    |POST|Create new record|/api/employees|
+    |PUT|Update existing record|/api/employees/{id}|
+    |DELETE|Delete a record|/api/employees/{id}|
 
-Response by Endpoint :
+    Retrieve all employees - public List<Employee> getAllEmployees()
+    Create new employee(PostMapping)- public Employee createEmployee(@RequestBody Employee employee)
+    - **Request body:**
+    public Employee createEmployee(@RequestBody Employee employee) –(PostMapping)
+    public Employee updateEmployee(@PathVariable Long id,@RequestBody Employee employee) –( @PutMapping("/{id}")
+    - **Response by Endpoint:**
+    Get all employees - public List<Employee> getAllEmployees()—(@GetMapping)
 
-Get all employees - public List\<Employee\>
-getAllEmployees()—(@GetMapping)
 
-**Response JSON**
+7.  Select the entire EmployeeController.java file . Open **Copilot Chat in Ask mode with Claude sonnet 4.5 model selected** .Paste the following prompt:
 
-\[
-
-  {
-
-    "id": 1,
-
-    "name": "John",
-
-    "surname": "Doe",
-
-    "email": "john.doe@example.com"
-
-  },
-
-  {
-
-    "id": 2,
-
-    "name": "Jane",
-
-    "surname": "Smith",
-
-    "email": "jane.smith@example.com"
-
-  }
-
-\]
-
-Get employee ID:
-
-@GetMapping("/{id}")
-
-public Employee getEmployeeById(@PathVariable Long id
-
-Response JSON
-
-{
-
-  "id": 1,
-
-  "name": "John",
-
-  "surname": "Doe",
-
-  "email": "john.doe@example.com"
-
-}
-
-**Create employee:**
-
-@PostMapping
-
-public Employee createEmployee(@RequestBody Employee employee)
-
-Response :
-
-{
-
-  "id": 3,
-
-  "name": "Alice",
-
-  "surname": "Brown",
-
-  "email": "alice.brown@example.com"
-
-}
-
-**Update employee:**
-
-@PutMapping("/{id}")
-
-public Employee updateEmployee(...)
-
-**Response** :
-
-{
-
-  "id": 1,
-
-  "name": "Updated Name",
-
-  "surname": "Updated Surname",
-
-  "email": "updated@email.com"
-
-}
-
-**Delete employee:**
-
-@DeleteMapping("/{id}")
-
-public void deleteEmployee(@PathVariable Long id)
-
-**Response** :
-
-No body
-
-HTTP Status: **200 OK** (or normally **204 No Content**)
-
-[TABLE]
-
-5.  Select the entire EmployeeController.java file . Open **Copilot
-    Chat** .Paste the following prompt:
-
-> Explain this Spring Boot REST controller.
->
-> Identify:
->
-> \- Base URL
->
-> \- All endpoints
->
-> \- HTTP methods
->
-> \- Request bodies
->
-> \- Response payloads
->
-> Explain it as if I am preparing to write tests.
->
-> ![](./media/image4.png)
+    ```
+    Explain this Spring Boot REST controller
+    Identify:
+    - Base URL
+    - All endpoints
+    - HTTP methods
+    - Request bodies
+    - Response payloads
+    Explain it as if I am preparing to write tests.
+    ```
+    ![](./media/image4.png)
 
 6.  You can see response similar to below response .Read the Copilot
     response and evaluate it.
+    Here's a full breakdown of the EmployeeController, oriented toward test writing:
+   - **Base URL**
+    Employee Model (Request/Response shape)
+    All endpoints consume and produce Employee objects serialized as JSON:
+    
+    |**Field**|**Type**|**Notes**|
+    |--|--|--|
+    |id|Long|Auto-generated (DB identity), not sent on create|
+    |name|string|Required for meaningful data|
+    |Surname|String|Required for meaningful data|
+    |email|String|Required for meaningful data|
+    **Endpoints**
+  - **Get All Employees**
+    
+    |**Method**|**GET**|
+    |--|--|
+    |URL|/api/employees|
+    |Request body|None|
+    |Response|200 OK + JSON array of Employee objects (empty array [] if none exist)|
+    - Similarllly prepare for all other endpoints as shown in image
 
-> Here's a full breakdown of
-> the [EmployeeController](vscode-file://vscode-app/c:/Users/ManjulaChintharla.AzureAD/AppData/Local/Programs/Microsoft%20VS%20Code/560a9dba96/resources/app/out/vs/code/electron-browser/workbench/workbench.html),
-> oriented toward test writing:
->
-> **Base URL**
->
-> **Employee Model (Request/Response shape)**
->
-> All endpoints consume and
-> produce [Employee](vscode-file://vscode-app/c:/Users/ManjulaChintharla.AzureAD/AppData/Local/Programs/Microsoft%20VS%20Code/560a9dba96/resources/app/out/vs/code/electron-browser/workbench/workbench.html) objects
-> serialized as JSON:
 
-[TABLE]
-
-> **Endpoints**
->
-> **1. Get All Employees**
-
-[TABLE]
-
-> **Test cases to consider:** empty list, populated list, response
-> shape.
->
-> **2. Get Employee by ID**
-
-[TABLE]
-
-> **Test cases to consider:** valid ID, non-existent ID (currently
-> returns null body with 200), invalid type (e.g. string ID).
->
-> **3. Create Employee**
-
-[TABLE]
-
-> **Example request body:**
->
-> **Test cases to consider:** valid payload, missing required fields,
-> duplicate email (if constrained).
->
-> **4. Update Employee**
-
-[TABLE]
-
-> **Fields
-> updated:** [name](vscode-file://vscode-app/c:/Users/ManjulaChintharla.AzureAD/AppData/Local/Programs/Microsoft%20VS%20Code/560a9dba96/resources/app/out/vs/code/electron-browser/workbench/workbench.html), [surname](vscode-file://vscode-app/c:/Users/ManjulaChintharla.AzureAD/AppData/Local/Programs/Microsoft%20VS%20Code/560a9dba96/resources/app/out/vs/code/electron-browser/workbench/workbench.html), [email](vscode-file://vscode-app/c:/Users/ManjulaChintharla.AzureAD/AppData/Local/Programs/Microsoft%20VS%20Code/560a9dba96/resources/app/out/vs/code/electron-browser/workbench/workbench.html) —
-> the [id](vscode-file://vscode-app/c:/Users/ManjulaChintharla.AzureAD/AppData/Local/Programs/Microsoft%20VS%20Code/560a9dba96/resources/app/out/vs/code/electron-browser/workbench/workbench.html) in
-> the body is ignored; the
-> path [id](vscode-file://vscode-app/c:/Users/ManjulaChintharla.AzureAD/AppData/Local/Programs/Microsoft%20VS%20Code/560a9dba96/resources/app/out/vs/code/electron-browser/workbench/workbench.html) drives
-> the lookup.
->
-> **Test cases to consider:** valid update, updating non-existent ID
-> (returns null + 200 — a gap), partial fields.
->
-> **5. Delete Employee**
-
-[TABLE]
-
-> **Test cases to consider:** delete existing, delete non-existent ID
-> (no error currently thrown).
->
-> **Key Testing Notes**
-
-- **No HTTP status customization** — every endpoint
-  returns 200 regardless of outcome (including not-found cases). Your
-  tests should assert both the status code and the response body.
-
-- **No validation annotations** (@NotNull, @Valid)
-  on [Employee](vscode-file://vscode-app/c:/Users/ManjulaChintharla.AzureAD/AppData/Local/Programs/Microsoft%20VS%20Code/560a9dba96/resources/app/out/vs/code/electron-browser/workbench/workbench.html) —
-  invalid/empty payloads will not be rejected at the controller level.
-
-- **null returns on
-  not-found** — [getEmployeeById](vscode-file://vscode-app/c:/Users/ManjulaChintharla.AzureAD/AppData/Local/Programs/Microsoft%20VS%20Code/560a9dba96/resources/app/out/vs/code/electron-browser/workbench/workbench.html) and [updateEmployee](vscode-file://vscode-app/c:/Users/ManjulaChintharla.AzureAD/AppData/Local/Programs/Microsoft%20VS%20Code/560a9dba96/resources/app/out/vs/code/electron-browser/workbench/workbench.html) return null instead
-  of a 404. This is a behavioral gap worth covering with negative-path
-  tests.
-
-- Good candidates for
-  mocking: [EmployeeService](vscode-file://vscode-app/c:/Users/ManjulaChintharla.AzureAD/AppData/Local/Programs/Microsoft%20VS%20Code/560a9dba96/resources/app/out/vs/code/electron-browser/workbench/workbench.html) (via @MockBean in
-  Spring Boot tests, or Mockito in unit tests).
-
-> ![](./media/image5.png)
+     ![](./media/image5.png)
 
 2.  Select the controller class.Open **Copilot Chat and ask**
 
@@ -338,90 +160,94 @@ HTTP Status: **200 OK** (or normally **204 No Content**)
 
     - Describe expected behavior
 
-![](./media/image6.png)
+    ![](./media/image6.png)
 
-![](./media/image7.png)
+    ![](./media/image7.png)
 
-Document “Create Employee”
+- Document “Create Employee”
 
-![](./media/image8.png)
+    ![](./media/image8.png)
 
-Delete records
+    - Delete records
 
-Create a Markdown file (for example, api-docs.md) containing:
+    ![](./media/image9.png)
 
-- Endpoint descriptions
+    - **Deliverable**
 
-- Sample curl requests
+    Create a Markdown file (for example, api-docs.md) containing:
+    
+    - Endpoint descriptions
+    
+    - Sample curl requests
+    
+    - Expected responses
+    
+    Explain this API. What endpoints does it expose, what are the request
+    and response formats?
 
-- Expected responses
-
-Explain this API. What endpoints does it expose, what are the request
-and response formats?
-
-/explain
-
-![](./media/image9.png)
+    ![](./media/image10.png)
 
 ## Task 2: Create Repository Layer Unit Tests
 
-The repository layer is responsible for data persistence. This task
-focuses on testing data access logic in isolation, without involving
+The repository layer is responsible for data persistence. This task focuses on testing data access logic in isolation, without involving
 business logic or REST endpoints.
 
 Write unit tests for the repository layer.
 
-1.  Navigate to src/test/java/com/example/demo and
-    **EmployeeRepositoryTest.java** file
+1.  Navigate to src/test/java/com/example/demo and create file +++EmployeeRepositoryTest.java+++ file
 
-![](./media/image10.png)
+    ![](./media/image11.png)
+    
+    ![](./media/image12.png)
 
-![](./media/image11.png)
-
-2.  At the top of EmployeeRepositoryTest.java, below comment manually.
+2.  At the top of **EmployeeRepositoryTest.java**, below comment manually.
     Stop typing and wait,Copilot will start suggesting:
 
-- @DataJpaTest
+    - @DataJpaTest
+    
+    - Autowired repository
+    
+    - Sample save and find tests
+      
+    ```
+    // Write JUnit tests for EmployeeRepository using @DataJpaTest.
+    ```
+    ![](./media/image13.png)
 
-- Autowired repository
+5. Open chat,select agent mode and Claude sonnet 4.5 model and then enter below prompt
 
-- Sample save and find tests
+    ```
+    Create JUnit 5 tests for EmployeeRepository
+    Requirements:
+    - Use @DataJpaTest
+    - Test basic CRUD operations (save, findAll, findById, delete)
+    - Use an in-memory database
+    - Follow Spring Boot testing best practices
+    ```
 
-// Write JUnit tests for EmployeeRepository using @DataJpaTest.
-
-![](./media/image12.png)5. Open chat and enter below prompt
-
-> Create JUnit 5 tests for EmployeeRepository.
->
-> Requirements:
->
-> \- Use @DataJpaTest
->
-> \- Test basic CRUD operations (save, findAll, findById, delete)
->
-> \- Use an in-memory database
->
-> \- Follow Spring Boot testing best practices
-
-![](./media/image13.png)
+    ![](./media/image14.png)
 
 3.  Copilot generate and update your test file .
 
-![](./media/image14.png)
+    ![](./media/image15.png)
 
 4.  Review unit tests and click on **Keep** to accept tests.
 
-![](./media/image15.png)
+    ![](./media/image16.png)
+    
+    ![](./media/image17.png)
 
-![](./media/image16.png)
+5.  Open Terminal->Git Bash and run below commands
+   +++cd "github-copilot-workshops-labs-java/lab-01-testing/java"+++
+   +++export MAVEN_HOME="/c/Users/Admin/Documents/maven-mvnd-1.0.5-windows-amd64/maven-mvnd-1.0.5-windows-amd64"+++
+   +++export PATH="$MAVEN_HOME/bin:$PATH"+++
+7.  Run test with mvn command
 
-5.  Run test
+    +++mvn test+++
 
-mvn test
-
-![](./media/image17.png)
-
-![](./media/image18.png)
+    ![](./media/image18.png)
+    
+    ![](./media/image19.png)
 
 ## Task 3: Create Service Layer Unit Tests
 
@@ -430,54 +256,42 @@ with the repository. This task teaches how to test logic independently
 of infrastructure by mocking dependencies.
 
 1.  Navigate to **src/test/java/com/example/demo** and create file with
-    the name **EmployeeServiceTest.java**
+    the name +++EmployeeServiceTest.java+++ and enter the below prompt in Copilot chat Agent mode.
+    
+    ```
+    Create unit tests for EmployeeService
+     Requirements:
+     - Use Mockito
+     - Mock EmployeeRepository
+     - Use @Mock and @InjectMocks
+    - Include positive and negative scenarios
+     - Follow JUnit 5 best practices
+    ```
 
-> ![](./media/image19.png)
+    ![](./media/image20.png)
 
-2.  Open GitHub Copilot chat and enter the below prompt
+    ![](./media/image22.png)
 
-> Create unit tests for EmployeeService.
->
-> Requirements:
->
-> \- Use Mockito
->
-> \- Mock EmployeeRepository
->
-> \- Use @Mock and @InjectMocks
->
-> \- Include positive and negative scenarios
->
-> \- Follow JUnit 5 best practices
->
-> ![](./media/image20.png)
->
-> ![](./media/image21.png)
+2.  Review and validate the generated tests and click on **Keep**
 
-3.  Review and validate the generated tests and click on **Keep**
+    ```
+    When GitHub Copilot generates unit tests
+    - Always verify package declarations
+    - Always verify import statements
+    - Ensure imported classes exist in src/main/java
+    - Fix any mismatches before running tests
+    ```
+    Copilot suggestions must be reviewed before execution.
+    ![](./media/image23.png)
 
-> When GitHub Copilot generates unit tests:
->
-> \- Always verify package declarations
->
-> \- Always verify import statements
->
-> \- Ensure imported classes exist in src/main/java
->
-> \- Fix any mismatches before running tests
->
-> Copilot suggestions must be reviewed before execution.
-
-![](./media/image22.png)
-
-![](./media/image23.png)
+    ![](./media/image24.png)
 
 4.  Open the terminal and navigate to the path suggested byb Copilot and
-    run **mvn test**
+    run +++mvn test+++
 
-> ![](./media/image24.png)
->
-> ![](./media/image25.png)
+     ![](./media/image25.png)
+
+     ![](./media/image26.png)
 
 ## Task 4 : Create Controller Layer Unit Tests
 
@@ -486,86 +300,72 @@ verifying HTTP behavior without starting the full application.**
 
 Test the REST API endpoints without starting the full application.
 
-**Tasks**
 
 1.  Navigate to src/test/java/com/example/demo and create a test class
-    named **EmployeeControllerTest.java**
+    named +++EmployeeControllerTest.java+++
 
-![](./media/image26.png)
+    ![](./media/image27.png)
 
 2.  Open Copilot and enter below prompt
 
-> Create unit tests for EmployeeController.
->
-> Use:
->
-> \- @WebMvcTest
->
-> \- MockMvc
->
-> \- Mock EmployeeService
->
-> Test:
->
-> \- GET /api/employees
->
-> \- GET /api/employees/{id}
->
-> \- POST /api/employees
->
-> Validate:
->
-> \- HTTP status codes
->
-> \- JSON response content
+       ```
+       Create unit tests for EmployeeController
+       Use:
+       - @WebMvcTest
+       - MockMvc
+       - Mock EmployeeService
+       Test:
+       - GET /api/employees
+       - GET /api/employees/{id}
+       - POST /api/employees
+       Validate:
+       - HTTP status codes
+       - JSON response content
+       ```
 
-![](./media/image27.png)
+    ![](./media/image28.png)
 
 3.  Review the tests and click on Keep to add the controller class.
 
-![](./media/image28.png)
+    ![](./media/image29.png)
 
 4.  When GitHub Copilot generates controller tests:
 
-> 1\. Verify the test's \`package\` declaration
->
-> 2\. It MUST match the main application package
->
-> For example:
->
-> \- Main application: \`com.example.demo\`
->
-> \- Test class MUST also be in: \`com.example.demo\`
->
-> If packages do not match, Spring Boot will fail to locate
->
-> \`@SpringBootApplication\` and tests will not start.
+    1. Verify the test's `package` declaration
+    2. It MUST match the main application package
 
-![](./media/image29.png)
+    For example:
+    - Main application: `com.example.demo`
+    - Test class MUST also be in: `com.example.demo`
 
-5.  Run below command to test – **mvn test** ( it will fail if package
+    If packages do not match, Spring Boot will fail to locate
+    `@SpringBootApplication` and tests will not start.
+
+
+    ![](./media/image30.png)
+
+5.  Run below command to test – +++mvn test+++ ( it will fail if package
     deflation is not matching)
 
-![](./media/image30.png)
+    ![](./media/image31.png)
 
-6.  Select the test class and ask copilot to fix the error - **/fix**
+6.  Select the test class and ask copilot in Agent mode to fix the error with the command  - +++/fix+++
 
-![](./media/image31.png)
+    ![](./media/image32.png)
 
 7.  GitHub Copilot may suggest improvements beyond fixing test failures,
 
-> such as recommending better REST semantics (e.g., returning 404
-> instead of 200).These suggestions are advisory.Only apply them if the
-> lab explicitly asks for API refactoring.
->
-> Developers must decide scope and intent.
+     such as recommending better REST semantics (e.g., returning 404
+     instead of 200).These suggestions are advisory.Only apply them if the
+     lab explicitly asks for API refactoring.
 
-![](./media/image32.png)
+     Developers must decide scope and intent.
 
-8.  Change the package from **package com.example;** to **package
-    com.example.demo;** and then run **mvn test**
+    ![](./media/image33.png)
 
-> ![](./media/image33.png)
+8.  Change the package from **package com.example;** to +++package com.example.demo;+++ and then run +++mvn test+++
+
+     ![](./media/image34.png)
 
 ## Task 5 : Add a New API Operation
 
@@ -576,29 +376,37 @@ employee by email and ensure it is properly tested at every layer.**
 Add a new feature to the API:**Find employee by email**
 
 1.  Open Copilot chat and enter below prompt
+   ```
+    Adda new features to find an employee by email
+    Requirements:
+    -	Add a repository method to find employee by email
+    -	Add a corresponding service method
+    -	Add a REST endpoint to fetch employee by email
+    -	Generate unit tests for repository service and controller layers
+    -	Follow existing coding style
+    ```
 
-![](./media/image34.png)
+    ![](./media/image35.png)
 
-2.  Review the response and accept by clicking on keep
+3.  Review the response and accept by clicking on keep
 
-![](./media/image35.png)
+    ![](./media/image36.png)
 
-3.  **Review and accept the test also**
+4.  **Review and accept the tests**
 
-![](./media/image36.png)
+    ![](./media/image37.png)
 
-4.  **Review and accept the code changes to repository and service
-    classes**
+5.  Review and accept the code changes to repository and service classes
 
-![](./media/image37.png)
+    ![](./media/image38.png)
 
-![](./media/image38.png)
+    ![](./media/image39.png)
 
-5.  Now run the command mvn clean test to clean the build
+6.  Now run the command +++mvn clean test+++ to clean the build
 
-![](./media/image39.png)
+    ![](./media/image40.png)
 
-![](./media/image40.png)
+    ![](./media/image41.png)
 
 ## Summary :
 
