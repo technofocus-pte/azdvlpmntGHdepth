@@ -7,9 +7,8 @@ the GitHub Copilot Chat extension in VS Code. This setup prepares your
 development environment for upcoming labs focused on code generation,
 productivity, security, and DevOps automation using GitHub Copilot.
 
-**If you still do not have an active Copilot license, a 30-day trial can
-be requested with the following steps. Make sure to cancel your license
-before the trial ends to avoid getting billed**.
+**Note: Activating GitHub Copilot now requires a valid payment method. Once you associate a card, you will be charged $10 immediately for the subscription.** 
+**There is no longer a free trial license. Please ensure you are comfortable with this charge before proceeding.**.
 
 **Note:** This lab is intended only for users who have not yet activated
 or configured GitHub Copilot. If your setup is already complete, you may
