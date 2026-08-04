@@ -1,3 +1,14 @@
+---
+lab:
+  title: 'Lab 01: Advanced Artifact Handling and Workflow Automation in GitHub Actions'
+  description: 'You will also learn how to add a production approval gate using GitHub Environments. Now let''s take the next step: trigger a separate production workflow after your build workflow finishes and download artifacts across workflow runs.'
+  duration: 140 minutes
+  level: 300
+  islab: true
+  primarytopics:
+    - GitHub
+---
+
 # Lab 01: Advanced Artifact Handling and Workflow Automation in GitHub Actions
 
 As a developer on the Octomatch team, you have already established a
