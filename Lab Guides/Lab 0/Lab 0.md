@@ -1,3 +1,16 @@
+---
+lab:
+  title: 'Lab 0: Activate and Configure GitHub Copilot Subscription'
+  description: In this lab, you will activate GitHub Copilot and configure it within Visual Studio Code to enable AI-assisted software development. You will sign in with your GitHub account, authenticate your access, and install the GitHub Copilot Chat extension in VS Code. This setup prepares your development environment for upcoming labs focused on code generation, productivity, security, and DevOps automation using GitHub Copilot.
+  duration: 30 minutes
+  level: 100
+  islab: true
+  primarytopics:
+    - GitHub
+    - Visual Studio
+    - Visual Studio Code
+---
+
 # Lab 0: Activate and Configure GitHub Copilot Subscription**
 
 In this lab, you will activate GitHub Copilot and configure it within
