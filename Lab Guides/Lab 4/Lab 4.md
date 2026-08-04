@@ -1,3 +1,14 @@
+---
+lab:
+  title: 'Lab 04: Building and Managing a Website with GitHub Pages and DevOps Practices'
+  description: Zava, a growing digital solutions company, wants to establish an online presence to showcase its projects, share updates, and publish technical blogs. The development team has decided to use GitHub Pages as a quick and efficient way to host and manage their website directly from their code repository. As a DevOps engineer at Zava, your task is to enable and configure the website, customize its appearance, and ensure continuous updates through version control practices. By completing this lab, you will help Zava build and maintain a live, professional website using GitHub Pages.
+  duration: 80 minutes
+  level: 100
+  islab: true
+  primarytopics:
+    - GitHub
+---
+
 # Lab 04: Building and Managing a Website with GitHub Pages and DevOps Practices
 
 Zava, a growing digital solutions company, wants to establish an online
