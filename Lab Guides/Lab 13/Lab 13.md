@@ -1,3 +1,14 @@
+---
+lab:
+  title: 'Lab 13: Automating Code Security: Blocking eval() with GitHub Actions and Semgrep'
+  description: This step shows students how insecure code (like eval()) is automatically detected by the Semgrep workflow. They learn how CI checks block unsafe merges.
+  duration: 108 minutes
+  level: 100
+  islab: true
+  primarytopics:
+    - GitHub
+---
+
 # **Lab 13: Automating Code Security: Blocking eval() with GitHub Actions and Semgrep**
 
 As a developer on the Octomatch team, you have already established a
