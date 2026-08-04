@@ -1,3 +1,14 @@
+---
+lab:
+  title: 'Lab 09: Debugging and fixing a buggy Node.js REST API with GitHub Copilot'
+  description: 'By the end of this lab, you will be able to:'
+  duration: 152 minutes
+  level: 200
+  islab: true
+  primarytopics:
+    - GitHub
+---
+
 # Lab 09: Debugging and fixing a buggy Node.js REST API with GitHub Copilot
 
 ### Scenario 
