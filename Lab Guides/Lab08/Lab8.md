@@ -1,3 +1,14 @@
+---
+lab:
+  title: Lab 08 – Building rapid Full-Stack application prototyping with GitHub Copilot
+  description: 'By the end of this lab, you will be able to:'
+  duration: 30 minutes
+  level: 100
+  islab: true
+  primarytopics:
+    - GitHub
+---
+
 # Lab 08 – Building rapid Full-Stack application prototyping with GitHub Copilot
 
 ### Scenario 

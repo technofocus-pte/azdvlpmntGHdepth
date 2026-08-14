@@ -1,3 +1,14 @@
+---
+lab:
+  title: 'Lab 03: Build, Automate & Deploy a Task Manager App using GitHub Copilot'
+  description: This lab provides a comprehensive understanding of how modern development teams build, automate, and deploy applications using DevOps practices. By integrating AI-assisted coding with CI/CD pipelines and deployment strategies, you experienced how to accelerate development while maintaining quality and control. The use of GitHub for version control, automation, and hosting demonstrates how a single platform can support the entire software delivery lifecycle, preparing you for real-world development and deployment scenarios.
+  duration: 162 minutes
+  level: 300
+  islab: true
+  primarytopics:
+    - GitHub
+---
+
 # Lab 03: Build, Automate & Deploy a Task Manager App using GitHub Copilot
 
 Zava, a fast-growing digital health company, is planning to launch a

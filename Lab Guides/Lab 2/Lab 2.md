@@ -1,3 +1,14 @@
+---
+lab:
+  title: 'Lab 02: Automate Docker Image Publishing with GitHub Actions'
+  description: In this lab, you successfully automated the process of building, tagging, and publishing Docker images using GitHub Actions. You also practiced branching, pull requests, and release management to simulate a real-world development workflow. This end-to-end experience highlights how CI/CD pipelines improve efficiency, maintain consistency, and support scalable application deployment.
+  duration: 138 minutes
+  level: 300
+  islab: true
+  primarytopics:
+    - GitHub
+---
+
 # **Lab 02: Automate Docker Image Publishing with GitHub Actions**
 
 You and your team have been working hard on an awesome web-based game

@@ -1,3 +1,14 @@
+---
+lab:
+  title: 'Lab 11: Building an Agentic SRE System with GitHub, Dependabot & Feedback Loops'
+  description: In this lab, you simulate a real-world Site Reliability Engineering (SRE) scenario where production systems require continuous monitoring, rapid incident response, and ongoing improvement. Using GitHub, you build an Agentic SRE System that automates incident detection, enriches issues with AI-driven insights, manages dependency updates through Dependabot, and creates a feedback loop for continuous improvement. This lab demonstrates how modern DevOps practices can reduce manual effort and improve system reliability through intelligent automation.
+  duration: 5 minutes
+  level: 300
+  islab: true
+  primarytopics:
+    - GitHub
+---
+
 # **Lab 11: Building an Agentic SRE System with GitHub, Dependabot & Feedback Loops**
 
 In this lab, you simulate a real-world Site Reliability Engineering

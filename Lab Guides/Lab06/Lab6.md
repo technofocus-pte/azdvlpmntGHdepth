@@ -1,3 +1,14 @@
+---
+lab:
+  title: 'Lab 06: Accelerating test‑driven development for a Java REST API with GitHub Copilot'
+  description: In this lab, you explored how GitHub Copilot can significantly improve developer productivity — when used thoughtfully and responsibly.
+  duration: 90 minutes
+  level: 100
+  islab: true
+  primarytopics:
+    - GitHub
+---
+
 # Lab 06: Accelerating test‑driven development for a Java REST API with GitHub Copilot
 
 **Lab Overview**

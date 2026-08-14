@@ -1,3 +1,14 @@
+---
+lab:
+  title: 'Lab 12: Secure your DevOps Pipeline with GitHub Advanced Security (GHAS)'
+  description: In modern software development, securing the DevOps pipeline is as critical as delivering features quickly. GitHub Advanced Security (GHAS) provides integrated tools to detect vulnerabilities, enforce security policies, and prevent sensitive data leaks directly within your repositories. This lab demonstrates how to enable CodeQL scanning, identify insecure coding patterns, and configure secret scanning with push protection to safeguard your applications. By the end, you will understand how GHAS acts as a security quality gate, ensuring that unsafe code and secrets never reach production.
+  duration: 5 minutes
+  level: 300
+  islab: true
+  primarytopics:
+    - GitHub
+---
+
 # **Lab 12: Secure your DevOps Pipeline with GitHub Advanced Security (GHAS)**
 
 In modern software development, securing the DevOps pipeline is as
