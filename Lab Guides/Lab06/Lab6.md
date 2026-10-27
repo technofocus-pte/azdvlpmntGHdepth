@@ -45,8 +45,6 @@ configured:
 
 - Visual Studio Code (or another Copilot-supported IDE)
 
-- GitHub Copilot extension (authenticated)
-
 - Java Development Kit (JDK) 17 or higher
 
 - Apache Maven
