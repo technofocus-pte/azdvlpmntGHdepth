@@ -278,12 +278,7 @@ You now have the **protected main** branch and two new branches –
     ![A screenshot of a computer Description automatically
     generated](./media/image37.png)
 
-4.  Navigate to **Extensions** tab from the left pane and make sure **GitHub Copilot** extension is installed. 
-
-    ![A screenshot of a chat Description automatically
-    generated](./media/image38.png)
-
-5.  Again, navigate to **Explorer** tab and create **a new folder** and
+5.  In the **Explorer** tab and create **a new folder** and
     name it as +++backend+++
 
     ![A screenshot of a computer Description automatically
