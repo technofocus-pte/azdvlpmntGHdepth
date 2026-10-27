@@ -95,35 +95,38 @@ coverage and upload the coverage/ directory as an artifact.
 
     ```
     name: Tests
-
+    
     on:
-    push:
+      push:
         branches:
-        - main
-    pull_request:
+          - main
+      pull_request:
         branches:
-        - main
-
+          - main
+    
     permissions:
-    contents: read
-
+      contents: read
+    
     jobs:
-    coverage:
+      coverage:
         name: Tests with Coverage
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@v6
-        - uses: actions/setup-node@v6
+          - uses: actions/checkout@v6
+    
+          - uses: actions/setup-node@v6
             with:
-            node-version: 24
-            cache: npm
-        - run: npm ci
-        - run: npm run test:coverage
-        - uses: actions/upload-artifact@v7
+              node-version: 24
+              cache: npm
+    
+          - run: npm ci
+    
+          - run: npm run test:coverage
+    
+          - uses: actions/upload-artifact@v7
             with:
-            name: test-coverage-report
-            path: coverage/
-
+              name: test-coverage-report
+              path: coverage/
     ```
 
     The **actions/upload-artifact** step uploads that entire directory as
