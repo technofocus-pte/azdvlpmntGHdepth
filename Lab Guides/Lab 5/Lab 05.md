@@ -1,7 +1,7 @@
 ---
 lab:
-  title: 'Lab 05: Build Application using the GitHub Copilot'
-  description: In this lab you will create the repository using a public template skills-build-applications-w-copilot-agent-mode.
+  title: 'Lab 05: Build a fitness application using GitHub Copilot'
+  description: In this lab, you will create the repository using a public template skills-build-applications-w-copilot-agent-mode.
   duration: 5 minutes
   level: 100
   islab: true
@@ -9,7 +9,7 @@ lab:
     - GitHub
 ---
 
-# Lab 05: Build Application using the GitHub Copilot
+# Lab 05: Build a fitness application using GitHub Copilot
 
 In this lab, participants will set up a preconfigured development
 environment using GitHub Codespaces to build a full-stack OctoFit
