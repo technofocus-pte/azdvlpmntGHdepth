@@ -29,11 +29,7 @@ skip these steps.
 1.  Open a new tab in your browser and go to Signup to GitHub Copilot
     - +++https://github.com/github-copilot/signup+++
 
-2.  Click on the "**Get access to GitHub Copilot”** button. 
-
-    ![Screenshot](./media/image1.png)
-
-3.  Enter billing information with your personal credit card and
+2.  Enter billing information with your personal credit card and
     then click on **Save**. 
 
     ![Screenshot](./media/image2.png)
