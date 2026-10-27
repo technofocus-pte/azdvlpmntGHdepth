@@ -29,15 +29,14 @@ skip these steps.
 1.  Open a new tab in your browser and go to Signup to GitHub Copilot
     - +++https://github.com/github-copilot/signup+++
 
-2.  Enter billing information with your personal credit card and
-    then click on **Save**. 
+2.  Enter your name and address and then click on **Save billing information**. 
 
-    ![Screenshot](./media/image2.png)
+    ![Screenshot](./media/image11.png)
 
-4.  Enter your billing information and then click on the **Save payment
+4.  Enter your billing credit card details and then click on the **Save payment
     information** button. 
 
-    ![Screenshot](./media/image3.png)
+    ![Screenshot](./media/image12.png)
 
     **IMPORTANT:** Make sure to deactivate the account after you complete
     the labs to avoid billing for usage. 
@@ -52,7 +51,7 @@ skip these steps.
 
     ![Screenshot](./media/image5.png)
 
-7.  Select the Browser and Sign in with your Copilot enabled Github account. 
+7.  Select the Browser and sign in with your Copilot-enabled GitHub account. 
 
     ![Screenshot](./media/image6.png)
 
@@ -66,9 +65,3 @@ skip these steps.
 9.  Click on Visual Studio Code. 
 
     ![Screenshot](./media/image9.png)
-
-10. Click on Extension from the left navigation menu, search
-    for +++GitHub Copilot+++ chat, select
-    it and click on **Install**. 
-
-    ![Screenshot](./media/image10.png)
