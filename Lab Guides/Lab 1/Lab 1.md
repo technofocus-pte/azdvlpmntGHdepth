@@ -225,7 +225,7 @@ Direct uploads are currently only available for single files.
     ![A screenshot of a computer Description automatically
     generated](./media/image21.png)
 
-2.  Add the below e2e job after the existing coverage job in the
+2.  Add the below e2e job after the existing **coverage** job in the
     workflow file:
 
     ```
@@ -255,7 +255,53 @@ Direct uploads are currently only available for single files.
     this case it will be index.html.
 
     **Note:** Ensure that you formatted the YAML correctly and that the
-    new e2e job is added at the same level as the existing coverage job.
+    new e2e job is added at the same level as the existing coverage job. Make sure your file look like this in case you'll get error in the formatting:
+
+    ```
+    name: Tests
+    on:
+      push:
+        branches:
+          - main
+      pull_request:
+        branches:
+          - main
+    permissions:
+      contents: read
+    jobs:
+      coverage:
+        name: Tests with Coverage
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+          - uses: actions/setup-node@v6
+            with:
+              node-version: 24
+              cache: npm
+          - run: npm ci
+          - run: npm run test:coverage
+          - uses: actions/upload-artifact@v7
+            with:
+              name: test-coverage-report
+              path: coverage/
+      e2e:
+        name: E2E Tests with Playwright
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+          - uses: actions/setup-node@v6
+            with:
+              node-version: 24
+              cache: npm
+          - run: npm ci
+          - run: npx playwright install --with-deps chromium
+          - run: npm run test:e2e
+          - uses: actions/upload-artifact@v7
+            with:
+              name: playwright-report
+              path: playwright-report/index.html
+              archive: false
+    ```
 
     ![A screenshot of a computer Description automatically
     generated](./media/image22.png)
@@ -337,31 +383,35 @@ simulate a deployment step.
 
     ```
     name: Build and Deploy
-
+    
     on:
-    workflow_dispatch:
-    push:
-        branches: [main]
-
+      workflow_dispatch:
+      push:
+        branches:
+          - main
+    
     permissions:
-    contents: read
-
+      contents: read
+    
     jobs:
-    build:
+      build:
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@v6
-        - uses: actions/setup-node@v6
+          - uses: actions/checkout@v6
+    
+          - uses: actions/setup-node@v6
             with:
-            node-version: 24
-            cache: npm
-        - run: npm ci
-        - run: npm run build
-        - uses: actions/upload-artifact@v7
+              node-version: 24
+              cache: npm
+    
+          - run: npm ci
+    
+          - run: npm run build
+    
+          - uses: actions/upload-artifact@v7
             with:
-            name: octomatch
-            path: dist
-
+              name: octomatch
+              path: dist/
     ```
 
     This job builds the site and uploads it as an octomatch artifact so
@@ -378,19 +428,20 @@ simulate a deployment step.
 
     ```
     dev:
-        name: Deploy Dev
-        needs: build
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/download-artifact@v8
-            with:
-                name: octomatch
-                path: website
-            - name: Deploy to Dev
-            run: |
-                echo "Downloaded artifact contents:"
-                tree website
-                echo "Demo deploy step: replace with your real deploy command."
+      name: Deploy Dev
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/download-artifact@v8
+          with:
+            name: octomatch
+            path: website
+  
+        - name: Deploy to Dev
+          run: |
+            echo "Downloaded artifact contents:"
+            tree website
+            echo "Demo deploy step: replace with your real deploy command."
     ```
 
     In this scenario we just list the contents of the downloaded artifact,
@@ -399,40 +450,82 @@ simulate a deployment step.
     ![A screenshot of a computer Description automatically
     generated](./media/image34.png)
 
-5.  Navigate to **Source Control** tab and add a **commit message**,
+5.  Make sure the entire file looks like this:
+
+    ```
+    name: Build and Deploy
+    on:
+      workflow_dispatch:
+      push:
+        branches:
+          - main
+    permissions:
+      contents: read
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+          - uses: actions/setup-node@v6
+            with:
+              node-version: 24
+              cache: npm
+          - run: npm ci
+          - run: npm run build
+          - uses: actions/upload-artifact@v7
+            with:
+              name: octomatch
+              path: dist/
+      dev:
+        name: Deploy Dev
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/download-artifact@v8
+            with:
+              name: octomatch
+              path: website
+          - name: Deploy to Dev
+            run: |
+              echo "Downloaded artifact contents:"
+              tree website
+              echo "Demo deploy step: replace with your real deploy command."
+    ```
+   
+7.  Navigate to **Source Control** tab and add a **commit message**,
     then commit and push your changes to the main branch to trigger this
     workflow.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image35.png)
 
-6.  Click on **Yes** to stage all your changes and commit them directly.
+8.  Click on **Yes** to stage all your changes and commit them directly.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image36.png)
 
-7.  **Sync** the committed changes.
+9.  **Sync** the committed changes.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image37.png)
 
-8.  Click **OK** to confirm.
+10.  Click **OK** to confirm.
 
     ![A screenshot of a computer error message Description automatically
     generated](./media/image38.png)
 
-9.  Navigate to the **Actions** tab and select **Build and deploy** workflow.
+11.  Navigate to the **Actions** tab and select **Build and deploy** workflow.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image39.png)
 
-10. Select **Updated3** workflow (The name of the workflow will show as
+11. Select **Updated3** workflow (The name of the workflow will show as
     the commit message).
 
     ![A screenshot of a computer Description automatically
     generated](./media/image40.png)
 
-11. Inspect the **Deploy Dev** job and you should see the output of
+12. Inspect the **Deploy Dev** job and you should see the output of
     the tree website command showing the contents of the downloaded
     artifact
 
@@ -470,16 +563,16 @@ Environments.
 
     ```
     name: Deploy Prod
-
+    
     on:
-    workflow_run:
+      workflow_run:
         workflows: ["Build and Deploy"]
         types:
-        - completed
-
+          - completed
+    
     permissions:
-    contents: read
-            actions: read
+      contents: read
+      actions: read
     ```
 
     This workflow will trigger every time the Build and Deploy workflow
@@ -496,24 +589,24 @@ Environments.
 
     ```
     jobs:
-        prod:
-            name: Deploy Prod
-            runs-on: ubuntu-latest
-            if: github.event.workflow_run.conclusion == 'success' 
-            environment: prod
-            steps:
-            - uses: actions/download-artifact@v8
-                with:
-                name: octomatch
-                path: website
-                run-id: ${{ github.event.workflow_run.id }}
-                github-token: ${{ secrets.GITHUB_TOKEN }}
-
-            - name: Deploy to Production
-                run: |
-                echo "Downloaded artifact contents:"
-                tree website
-                        echo "Demo deploy step: replace with your real deploy command."
+      prod:
+        name: Deploy Prod
+        runs-on: ubuntu-latest
+        if: github.event.workflow_run.conclusion == 'success'
+        environment: prod
+        steps:
+          - uses: actions/download-artifact@v8
+            with:
+              name: octomatch
+              path: website
+              run-id: ${{ github.event.workflow_run.id }}
+              github-token: ${{ secrets.GITHUB_TOKEN }}
+    
+          - name: Deploy to Production
+            run: |
+              echo "Downloaded artifact contents:"
+              tree website
+              echo "Demo deploy step: replace with your real deploy command."
     ```
 
     The if conditional ensures this job only runs if the triggering
@@ -526,28 +619,64 @@ Environments.
     ![A screenshot of a computer Description automatically
     generated](./media/image45.png)
 
-5.  Navigate to **Source Control** tab. Add a **commit message**,
+5.  Make sure the entire file looks like this:
+
+    ```
+    name: Deploy Prod
+    
+    on:
+      workflow_run:
+        workflows: ["Build and Deploy"]
+        types:
+          - completed
+    
+    permissions:
+      contents: read
+      actions: read
+    
+    jobs:
+      prod:
+        name: Deploy Prod
+        runs-on: ubuntu-latest
+        if: github.event.workflow_run.conclusion == 'success'
+        environment: prod
+        steps:
+          - uses: actions/download-artifact@v8
+            with:
+              name: octomatch
+              path: website
+              run-id: ${{ github.event.workflow_run.id }}
+              github-token: ${{ secrets.GITHUB_TOKEN }}
+    
+          - name: Deploy to Production
+            run: |
+              echo "Downloaded artifact contents:"
+              tree website
+              echo "Demo deploy step: replace with your real deploy command."
+    ```
+   
+7.  Navigate to **Source Control** tab. Add a **commit message**,
     **commit** and push your changes to the main branch.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image46.png)
 
-6.  Click on **Yes** to stage all your changes and commit them directly.
+8.  Click on **Yes** to stage all your changes and commit them directly.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image47.png)
 
-7.  **Sync** the committed changes.
+9.  **Sync** the committed changes.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image48.png)
 
-8.  Click on **OK** to confirm.
+10.  Click on **OK** to confirm.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image49.png)
 
-9.  Monitor the workflow in the **Actions** tab.
+11.  Monitor the workflow in the **Actions** tab.
 
     The commit will trigger the Build and Deploy workflow, and when that
     completes, the Deploy Prod workflow should get triggered as well.
@@ -561,7 +690,7 @@ Environments.
     ![A screenshot of a computer Description automatically
     generated](./media/image52.png)
 
-10. Review the workflow.
+11. Review the workflow.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image53.png)
