@@ -113,15 +113,15 @@ our **Stackoverflown** game as a docker image.
 
     ```
     name: Docker Publish
-
+    
     on:
-    push:
+      push:
         branches:
-        - main
-
+          - main
+    
     permissions:
-    contents: read
-    packages: write
+      contents: read
+      packages: write
     ```
 
     This workflow will run on all commits pushed to the main branch with
@@ -139,21 +139,22 @@ our **Stackoverflown** game as a docker image.
 
     ```
     jobs:
-    build-and-push:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - name: Log in to the Container registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and push Docker image
-        run: |
-            docker build . --tag ghcr.io/<GITHUB_USERNAME>/publish-docker-images/stackoverflown:main
-            docker push ghcr.io/<GITHUB_USERNAME>/publish-docker-images/stackoverflown:main
-
+      build-and-push:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+    
+          - name: Log in to the Container registry
+            uses: docker/login-action@v3
+            with:
+              registry: ghcr.io
+              username: ${{ github.actor }}
+              password: ${{ secrets.GITHUB_TOKEN }}
+    
+          - name: Build and push Docker image
+            run: |
+              docker build . --tag ghcr.io/<GITHUB_USERNAME>/publish-docker-images/stackoverflown:main
+              docker push ghcr.io/<GITHUB_USERNAME>/publish-docker-images/stackoverflown:main
     ```
 
     This job checks out the repository code, authenticates to the GitHub
@@ -165,29 +166,57 @@ our **Stackoverflown** game as a docker image.
 
     ![](./media/image12.png)
 
-5.  Go to **Source Control** tab and add a **commit message** as +++Build workflow+++ and push
+5.  Make sure the entire file looks like this:
+
+    ```
+    name: Docker Publish
+    on:
+      push:
+        branches:
+          - main
+    permissions:
+      contents: read
+      packages: write
+    jobs:
+      build-and-push:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v6
+          - name: Log in to the Container registry
+            uses: docker/login-action@v3
+            with:
+              registry: ghcr.io
+              username: ${{ github.actor }}
+              password: ${{ secrets.GITHUB_TOKEN }}
+          - name: Build and push Docker image
+            run: |
+              docker build . --tag ghcr.io/<GITHUB_USERNAME>/publish-docker-images/stackoverflown:main
+              docker push ghcr.io/<GITHUB_USERNAME>/publish-docker-images/stackoverflown:main
+    ```
+    
+7.  Go to **Source Control** tab and add a **commit message** as +++Build workflow+++ and push
     your changes to the **main** branch.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image13.png)
 
-6.  Click **Yes** to stage all your changes and commit them directly to
+8.  Click **Yes** to stage all your changes and commit them directly to
     main branch.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image14.png)
 
-7.  **Sync** the committed changes.
+9.  **Sync** the committed changes.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image15.png)
 
-8.  Click **OK** to confirm.
+10.  Click **OK** to confirm.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image16.png)
 
-9.  When you push your changes, the workflow you just created should
+11.  When you push your changes, the workflow you just created should
     also run for the first time. Monitor it in the **Actions** tab
     and **ensure it completes successfully**.
 
@@ -278,7 +307,7 @@ robust and feature-rich build process.
 
     ![](./media/image28.png)
 
-20. Now, add these following three steps in place of the Build and push
+20. Now, add the following three steps in place of the Build and push
     Docker image step you just removed.
 
     These steps will set up QEMU for multi-architecture builds, set up
@@ -312,42 +341,44 @@ robust and feature-rich build process.
 
     ```
     name: Docker Publish
-
+    
     on:
-    push:
+      push:
         branches:
-        - main
-
+          - main
+    
     permissions:
-    contents: read
-    packages: write
-
+      contents: read
+      packages: write
+    
     jobs:
-    build-and-push:
+      build-and-push:
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@v6
-        - name: Log in to the Container registry
+          - uses: actions/checkout@v6
+    
+          - name: Log in to the Container registry
             uses: docker/login-action@v3
             with:
-            registry: ghcr.io
-            username: ${{ github.actor }}
-            password: ${{ secrets.GITHUB_TOKEN }}
-        - name: Set up QEMU
+              registry: ghcr.io
+              username: ${{ github.actor }}
+              password: ${{ secrets.GITHUB_TOKEN }}
+    
+          - name: Set up QEMU
             uses: docker/setup-qemu-action@v3
-
-        - name: Set up Docker Buildx
+    
+          - name: Set up Docker Buildx
             uses: docker/setup-buildx-action@v3
-
-        - name: Build and push Docker image
+    
+          - name: Build and push Docker image
             uses: docker/build-push-action@v6
             with:
-            context: .
-            push: true
-            platforms: linux/amd64,linux/arm64
-            tags: |
-                ghcr.io/contosotech/publish-docker-images/stackoverflown:main
-                ghcr.io/contosotech/publish-docker-images/stackoverflown:${{ github.sha }}
+              context: .
+              push: true
+              platforms: linux/amd64,linux/arm64
+              tags: |
+                ghcr.io/<github-username>/publish-docker-images/stackoverflown:main
+                ghcr.io/<github-username>/publish-docker-images/stackoverflown:${{ github.sha }}
     ```
 
     ![](./media/image29.png)
